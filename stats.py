@@ -55,6 +55,10 @@ draw.rectangle((0, 0, oled.width, oled.height), outline=255, fill=255)
 # Load default font.
 font = ImageFont.load_default()
 
+
+padding = -2
+top = padding
+bottom = height-padding
 # Move left to right keeping track of the current x position for drawing shapes.
 x = 0
 while True:
