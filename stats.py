@@ -98,6 +98,14 @@ draw.text((x, top+8),     str(CPU), font=font, fill=255)
 draw.text((x, top+16),    str(MemUsage),  font=font, fill=255)
 draw.text((x, top+25),    str(Disk),  font=font, fill=255)
 
+
+# Create blank image for drawing.
+# Make sure to create image with mode '1' for 1-bit color.
+image = Image.new("1", (oled.width, oled.height))
+
+# Get drawing object to draw on image.
+draw = ImageDraw.Draw(image)
+
 # Draw a white background
 draw.rectangle((0, 0, oled.width, oled.height), outline=255, fill=255)
 
@@ -124,8 +132,4 @@ draw.text(
 
 # Display image
 oled.image(image)
-oled.show()
-
-# Display image
-oled.image(image)
-oled.show()
+oled.show()show()
