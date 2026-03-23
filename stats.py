@@ -98,6 +98,20 @@ draw.text((x, top+8),     str(CPU), font=font, fill=255)
 draw.text((x, top+16),    str(MemUsage),  font=font, fill=255)
 draw.text((x, top+25),    str(Disk),  font=font, fill=255)
 
+# Draw a white background
+draw.rectangle((0, 0, oled.width, oled.height), outline=255, fill=255)
+
+# Draw a smaller inner rectangle
+draw.rectangle(
+    (BORDER, BORDER, oled.width - BORDER - 1, oled.height - BORDER - 1),
+    outline=0,
+    fill=0,
+)
+
+# Load default font.
+font = ImageFont.load_default()
+
+# Draw Some Text
 text = "Hello World!"
 bbox = font.getbbox(text)
 (font_width, font_height) = bbox[2] - bbox[0], bbox[3] - bbox[1]
@@ -107,6 +121,10 @@ draw.text(
     font=font,
     fill=255,
 )
+
+# Display image
+oled.image(image)
+oled.show()
 
 # Display image
 oled.image(image)
