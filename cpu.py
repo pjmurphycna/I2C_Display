@@ -53,39 +53,41 @@ MemUsage = subprocess.check_output(cmd, shell = True )
 cmd = "df -h | awk '$NF==\"/\"{printf \"Disk: %d/%dGB %s\", $3,$2,$5}'"
 Disk = subprocess.check_output(cmd, shell = True )
 
+while True:
 
 
-# Create blank image for drawing.
-# Make sure to create image with mode '1' for 1-bit color.
-image = Image.new("1", (oled.width, oled.height))
+    # Create blank image for drawing.
+    # Make sure to create image with mode '1' for 1-bit color.
+    image = Image.new("1", (oled.width, oled.height))
 
-# Get drawing object to draw on image.
-draw = ImageDraw.Draw(image)
+    # Get drawing object to draw on image.
+    draw = ImageDraw.Draw(image)
 
-# Draw a white background
-draw.rectangle((0, 0, oled.width, oled.height), outline=255, fill=255)
+    # Draw a white background
+    draw.rectangle((0, 0, oled.width, oled.height), outline=255, fill=255)
 
-# Draw a smaller inner rectangle
-draw.rectangle(
-    (BORDER, BORDER, oled.width - BORDER - 1, oled.height - BORDER - 1),
-    outline=0,
-    fill=0,
-)
+    # Draw a smaller inner rectangle
+    draw.rectangle(
+        (BORDER, BORDER, oled.width - BORDER - 1, oled.height - BORDER - 1),
+        outline=0,
+        fill=0,
+    )
 
-# Load default font.
-font = ImageFont.load_default()
+    # Load default font.
+    font = ImageFont.load_default()
 
-# Draw Some Text
-text = str(CPU)
-bbox = font.getbbox(text)
-(font_width, font_height) = bbox[2] - bbox[0], bbox[3] - bbox[1]
-draw.text(
-    (oled.width // 2 - font_width // 2, oled.height // 2 - font_height // 2),
-    text,
-    font=font,
-    fill=255,
-)
+    # Draw Some Text
+    text = str(CPU)
+    bbox = font.getbbox(text)
+    (font_width, font_height) = bbox[2] - bbox[0], bbox[3] - bbox[1]
+    draw.text(
+        (oled.width // 2 - font_width // 2, oled.height // 2 - font_height // 2),
+        text,
+        font=font,
+        fill=255,
+    )
 
-# Display image
-oled.image(image)
-oled.show()
+    # Display image
+    oled.image(image)
+    oled.show()
+    time.sleep(.1)
