@@ -55,6 +55,10 @@ draw.rectangle((0, 0, oled.width, oled.height), outline=255, fill=255)
 # Load default font.
 font = ImageFont.load_default()
 
+# Make sure to create image with mode '1' for 1-bit color.
+width = disp.width
+height = disp.height
+image = Image.new('1', (width, height))
 
 padding = -2
 top = padding
