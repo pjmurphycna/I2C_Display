@@ -84,9 +84,17 @@ while True:
     draw.text((x, top+16),    str(MemUsage),  font=font, fill=255)
     draw.text((x, top+25),    str(Disk),  font=font, fill=255)
 
+text = "Hello World!"
+bbox = font.getbbox(text)
+(font_width, font_height) = bbox[2] - bbox[0], bbox[3] - bbox[1]
+draw.text(
+    (oled.width // 2 - font_width // 2, oled.height // 2 - font_height // 2),
+    text,
+    font=font,
+    fill=255,
+)
 
 # Display image
 oled.image(image)
-oled.display()
 oled.show()
 time.sleep(.1)
