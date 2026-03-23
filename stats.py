@@ -41,44 +41,6 @@ oled = adafruit_ssd1306.SSD1306_I2C(WIDTH, HEIGHT, i2c, addr=0x3C, reset=oled_re
 oled.fill(0)
 oled.show()
 
-# Create blank image for drawing.
-# Make sure to create image with mode '1' for 1-bit color.
-image = Image.new("1", (oled.width, oled.height))
-
-# Get drawing object to draw on image.
-draw = ImageDraw.Draw(image)
-
-# Draw a white background
-draw.rectangle((0, 0, oled.width, oled.height), outline=255, fill=255)
-
-# Draw a smaller inner rectangle
-draw.rectangle(
-    (BORDER, BORDER, oled.width - BORDER - 1, oled.height - BORDER - 1),
-    outline=0,
-    fill=0,
-)
-
-
-# Get drawing object to draw on image.
-draw = ImageDraw.Draw(image)
-
-# Draw a white background
-draw.rectangle((0, 0, oled.width, oled.height), outline=255, fill=255)
-
-
-# Load default font.
-font = ImageFont.load_default()
-
-# Make sure to create image with mode '1' for 1-bit color.
-width = oled.width
-height = oled.height
-image = Image.new('1', (width, height))
-
-padding = -2
-top = padding
-bottom = height-padding
-# Move left to right keeping track of the current x position for drawing shapes.
-x = 0
 
 
 # Shell scripts for system monitoring from here : https://unix.stackexchange.com/questions/119126/command-to-display-memory-usage-disk-usage-and-cpu-load
@@ -91,12 +53,6 @@ MemUsage = subprocess.check_output(cmd, shell = True )
 cmd = "df -h | awk '$NF==\"/\"{printf \"Disk: %d/%dGB %s\", $3,$2,$5}'"
 Disk = subprocess.check_output(cmd, shell = True )
 
-    # Write two lines of text.
-
-draw.text((x, top),       "IP: " + str(IP),  font=font, fill=255)
-draw.text((x, top+8),     str(CPU), font=font, fill=255)
-draw.text((x, top+16),    str(MemUsage),  font=font, fill=255)
-draw.text((x, top+25),    str(Disk),  font=font, fill=255)
 
 
 # Create blank image for drawing.
@@ -132,4 +88,4 @@ draw.text(
 
 # Display image
 oled.image(image)
-oled.show()show()
+oled.show()
