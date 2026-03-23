@@ -54,6 +54,9 @@ draw.rectangle((0, 0, oled.width, oled.height), outline=255, fill=255)
 # Load default font.
 font = ImageFont.load_default()
 
+
+while True:
+
 # Shell scripts for system monitoring from here : https://unix.stackexchange.com/questions/119126/command-to-display-memory-usage-disk-usage-and-cpu-load
     cmd = "hostname -I | cut -d\' \' -f1"
     IP = subprocess.check_output(cmd, shell = True )
@@ -75,3 +78,4 @@ font = ImageFont.load_default()
 # Display image
 oled.image(image)
 oled.show()
+time.sleep(.1)
