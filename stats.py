@@ -76,7 +76,7 @@ draw.rectangle(
 font = ImageFont.load_default()
 
 # Draw Some Text
-text = "Hello World!"
+text = "IP" + IP
 bbox = font.getbbox(text)
 (font_width, font_height) = bbox[2] - bbox[0], bbox[3] - bbox[1]
 draw.text(
