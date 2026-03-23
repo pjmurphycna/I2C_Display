@@ -55,7 +55,8 @@ draw.rectangle((0, 0, oled.width, oled.height), outline=255, fill=255)
 # Load default font.
 font = ImageFont.load_default()
 
-
+# Move left to right keeping track of the current x position for drawing shapes.
+x = 0
 while True:
 
 # Shell scripts for system monitoring from here : https://unix.stackexchange.com/questions/119126/command-to-display-memory-usage-disk-usage-and-cpu-load
