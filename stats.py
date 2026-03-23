@@ -87,5 +87,6 @@ while True:
 
 # Display image
 oled.image(image)
+oled.display()
 oled.show()
 time.sleep(.1)
