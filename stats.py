@@ -68,7 +68,7 @@ x = 0
 
 
 # Shell scripts for system monitoring from here : https://unix.stackexchange.com/questions/119126/command-to-display-memory-usage-disk-usage-and-cpu-load
-md = "hostname -I | cut -d\' \' -f1"
+cmd = "hostname -I | cut -d\' \' -f1"
 IP = subprocess.check_output(cmd, shell = True )
 cmd = "top -bn1 | grep load | awk '{printf \"CPU Load: %.2f\", $(NF-2)}'"
 CPU = subprocess.check_output(cmd, shell = True )
